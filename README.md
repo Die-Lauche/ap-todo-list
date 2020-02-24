@@ -16,6 +16,12 @@ npm run build
 
 
 ```
+#### Linux (Arch) Notice
+``` bash
+# install gconf
+pacman -Sy gconf
+
+```
 
 ---
 
