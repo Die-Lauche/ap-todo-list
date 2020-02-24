@@ -1,6 +1,6 @@
 # ap-todo-list
 
-> AP-Project ToDo List wit Login and User Management. Abgabe 13.3.20
+> AP-Project ToDo List with Login and User Management. Abgabe 13.3.20
 
 #### Build Setup
 
