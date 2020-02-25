@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
     name: 'Login',
     data() {
@@ -20,8 +22,11 @@ export default {
             }
         }
     },
-
+    computed: {
+        ...mapGetters(['todos']),
+    },
     methods: {
+        ...mapActions(['setDone', 'setUndone']),
         login() {
             // @TODO: Add authentication via DB useraccount and a session when logged in
             if(this.input.username != "" && this.input.password != "") {
