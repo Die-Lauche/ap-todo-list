@@ -28,7 +28,8 @@ CREATE TABLE `todo` (
     `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     `content` VARCHAR(255),
     `completed` BOOLEAN,
-    `deleted` BOOLEAN
+    `todo_list_id` INT UNSIGNED,
+    FOREIGN KEY (`todo_list_id`) REFERENCES `todo_list`(`id`)
 );
 
 CREATE TABLE `user_has_todo_list` (
