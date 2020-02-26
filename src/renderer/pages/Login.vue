@@ -10,10 +10,8 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
 
 export default {
-    name: 'Login',
     data() {
         return {
             input: {
@@ -22,17 +20,13 @@ export default {
             }
         }
     },
-    computed: {
-        ...mapGetters(['todos']),
-    },
     methods: {
-        ...mapActions(['setDone', 'setUndone']),
         login() {
-            // @TODO: Add authentication via DB useraccount and a session when logged in
+            // TODO: Add authentication via DB useraccount and a session when logged in
             if(this.input.username != "" && this.input.password != "") {
                 if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
                     this.$emit("authenticated", true);
-                    this.$router.replace({ name: "secure" });
+                    this.$router.replace({ name: "overview" });
                 } else {
                     console.log("Wrong username or password entered!");
                 }
