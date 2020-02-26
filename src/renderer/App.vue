@@ -9,9 +9,6 @@
 </template>
 
 <script>
-/* export default {
-    name: 'ap-todo-list'
-  } */
 export default {
   name: "App",
   data() {
@@ -24,8 +21,14 @@ export default {
     };
   },
   mounted() {
+    // Send the user to the login page if hes not authenticated
     if (!this.authenticated) {
-      this.$router.replace({ name: "login" });
+        if (sessionStorage.getItem('user') !== null) {
+            this.authenticated = true;
+        }
+        else {
+            this.$router.replace({ name: "login" });
+        }
     }
   },
   methods: {
@@ -33,7 +36,10 @@ export default {
       this.authenticated = status;
     },
     logout() {
-      this.authenticated = false;
+        sessionStorage.removeItem('user')
+        this.authenticated = false;
+        this.$router.replace({ name: "login" });
+        // @todo Clear the store
     }
   }
 };

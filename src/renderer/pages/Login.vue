@@ -22,10 +22,16 @@ export default {
     },
     methods: {
         login() {
-            // TODO: Add authentication via DB useraccount and a session when logged in
+            // TODO: Add authentication via DB useraccount
+            // User login authentication and session creation
             if(this.input.username != "" && this.input.password != "") {
                 if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
                     this.$emit("authenticated", true);
+
+                    // Save username in session.
+                    sessionStorage.setItem('user', this.input.username);
+
+                    // Redirect to the overview page
                     this.$router.replace({ name: "overview" });
                 } else {
                     console.log("Wrong username or password entered!");
@@ -33,7 +39,7 @@ export default {
             } else {
                 console.log("No username or password entered!");
             }
-        }
+        },
     }
 }
 </script>
