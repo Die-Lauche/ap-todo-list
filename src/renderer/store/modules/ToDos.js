@@ -19,8 +19,8 @@ const getters = {
 }
 
 const mutations = {
-    done(state, id) { state.todos.filter(item => item.id === id)[0].done = true },
-    undone(state, id) { state.todos.filter(item => item.id === id)[0].done = false }
+    done(state, id) { state.todos.filter(item => item.id === id)[0].completed = true },
+    undone(state, id) { state.todos.filter(item => item.id === id)[0].completed = false }
 }
 
 const actions = {
@@ -32,7 +32,7 @@ const actions = {
     setUndone(context, id) {
         // TODO: Update in DB
         context.commit('undone', id) // change locally (mutate)
-    }
+    },
 }
 
 export default {

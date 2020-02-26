@@ -2,9 +2,11 @@
 
     <div id="login">
         <h1>ToDo-List Login</h1>
-        <input type="text" name="username" v-model="input.username" placeholder="Benutzername" />
-        <input type="password" name="password" v-model="input.password" placeholder="Passwort" />
-        <button type="button" class="btn" v-on:click="login()"><span>Login</span></button>
+        <form>
+            <input type="text" name="username" v-model="input.username" placeholder="Benutzername" />
+            <input type="password" name="password" v-model="input.password" placeholder="Passwort" />
+            <button type="submit" class="btn" v-on:click="login()"><span>Login</span></button>
+        </form>
     </div>
 
 </template>
