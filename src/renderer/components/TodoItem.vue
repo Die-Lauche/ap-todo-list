@@ -19,6 +19,7 @@ export default {
     }
   },
   methods: {
+    // Call the action to toggle the completed state on the current todo
     toggleCompletion() {
       if (this.todo.completed) {
         this.$store.dispatch("ToDos/setUndone", this.todo.id);
