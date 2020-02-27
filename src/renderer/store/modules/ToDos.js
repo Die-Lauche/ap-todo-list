@@ -21,8 +21,8 @@ const getters = {
 const mutations = {
     done(state, id) { state.todos.filter(item => item.id === id)[0].completed = true },
     undone(state, id) { state.todos.filter(item => item.id === id)[0].completed = false },
-    add(state, list_id, text) {
-        state.todos.push({id: 100, todo_list_id: list_id, content: text, completed: false})
+    add(state, todoData) {
+        state.todos.push( { id: 100, todo_list_id: todoData[0], content: todoData[1], completed: false } )
     }
 }
 
@@ -38,9 +38,9 @@ const actions = {
         // TODO: Update in DB
         context.commit('undone', id) // change locally (mutate)
     },
-    // Add a new todo to the specified list (id parameter)
-    addTodo(context, list_id, text) {
-        context.commit('add', list_id, text)
+    // Add a new todo to the specified list (todoData contains [0] = the list id, [1] = the text)
+    addTodo(context, todoData) {
+        context.commit('add', todoData)
     }
 }
 

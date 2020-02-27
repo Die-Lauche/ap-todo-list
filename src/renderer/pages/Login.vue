@@ -2,45 +2,46 @@
 
     <div id="login">
         <h1>ToDo-List Login</h1>
-        <form>
-            <input type="text" name="username" v-model="input.username" placeholder="Benutzername" />
-            <input type="password" name="password" v-model="input.password" placeholder="Passwort" />
-            <button type="submit" class="btn" v-on:click="login()"><span>Login</span></button>
+        <form @submit.prevent="doLogin">
+            <input type="text" name="username" v-model="username" placeholder="Benutzername" />
+            <input type="password" name="password" v-model="password" placeholder="Passwort" />
+            <button type="submit" class="btn"><span>Login</span></button>
         </form>
     </div>
 
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
     data() {
         return {
-            input: {
-                username: "",
-                password: "",
-            }
+            username: "",
+            password: "",
         }
     },
     methods: {
-        login() {
+        ...mapActions("Users", ["login"]),
+        doLogin() {
+            this.login(this.username, this.password)
             // TODO: Add authentication via DB useraccount
             // User login authentication and session creation
-            if(this.input.username != "" && this.input.password != "") {
-                if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-                    this.$emit("authenticated", true);
+            // if(this.input.username != "" && this.input.password != "") {
+            //     if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
+            //         this.$emit("authenticated", true);
 
-                    // Save username in session.
-                    sessionStorage.setItem('user', this.input.username);
+            //         // Save username in session.
+            //         sessionStorage.setItem('user', this.input.username);
 
-                    // Redirect to the overview page
-                    this.$router.replace({ name: "overview" });
-                } else {
-                    console.log("Wrong username or password entered!");
-                }
-            } else {
-                console.log("No username or password entered!");
-            }
+            //         // Redirect to the overview page
+            //         this.$router.replace({ name: "overview" });
+            //     } else {
+            //         console.log("Wrong username or password entered!");
+            //     }
+            // } else {
+            //     console.log("No username or password entered!");
+            // }
         },
     }
 }

@@ -52,7 +52,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "miragejs": "^0.1.35",
     "mysql": "^2.18.1",
+    "node-fetch": "^2.6.0",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
