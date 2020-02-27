@@ -12,7 +12,7 @@ export default {
     components: { TodoList },
     computed: {
         ...mapGetters('ToDos', ['lists']),
-    },
+    }
 }
 </script>
 
